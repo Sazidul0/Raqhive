@@ -1,0 +1,138 @@
+# Professional-Grade IDS Rule Configuration
+rules:
+  - name: "Suspicious Execution From Temp"
+    description: "A process was executed from a temporary or world-writable directory."
+    enabled: true
+    event: "exec"
+    severity: "medium"
+    match:
+      # Use regex for flexible path matching
+      filename_regex: "^/(tmp|var/tmp|dev/shm)/.*"
+
+  - name: "Web Server Spawning Shell"
+    description: "A web server process spawned a shell, indicating a potential web shell."
+    enabled: true
+    event: "exec"
+    severity: "high"
+    match:
+      parent_process_regex: "apache2|nginx|httpd|caddy"
+      child_process_regex: "sh|bash|zsh|dash|ksh"
+
+  - name: "Potential Data Exfiltration via Network"
+    description: "A process accessed a sensitive file and subsequently made an outbound network connection within a time window."
+    enabled: true
+    event: "connect" # This rule is triggered on the 'connect' event
+    severity: "high"
+    stateful:
+      # If a process opens a file matching this regex...
+      source_event_match:
+        event: "open"
+        filename_regex: "^/etc/(shadow|group|sudoers)|/root/.ssh/id_rsa$"
+      # ...and then this 'connect' event occurs within the time window, trigger the alert.
+      time_window_seconds: 300 # 5 minutes
+
+  - name: "Low-Severity: Package Manager Execution"
+    description: "Monitoring package manager activity."
+    enabled: true
+    event: "exec"
+    severity: "low"
+    match:
+      filename_regex: "^/usr/bin/(apt|dpkg|yum|dnf)$"
+      
+      
+  - name: "Unauthorized Binary Execution"
+    description: "Execution of binaries outside common system paths, indicating possible malware or persistence."
+    enabled: true
+    event: "exec"
+    severity: "medium"
+    match:
+      filename_regex: "^/(home|opt|srv|tmp|var/tmp)/.*"
+
+  - name: "Suspicious Network Connection to Blacklisted IPs"
+    description: "Process made a connection to a known malicious or blacklisted IP address."
+    enabled: true
+    event: "connect"
+    severity: "high"
+    match:
+      # List of blacklisted IPs (example IPs, replace with real ones)
+      daddr_regex: "^(192\.168\.1\.100|10\.0\.0\.5|203\.0\.113\.50)$"
+
+  - name: "Suspicious Child Process of SSH Daemon"
+    description: "SSH daemon spawning uncommon child processes which might indicate lateral movement."
+    enabled: true
+    event: "exec"
+    severity: "high"
+    match:
+      parent_process_regex: "^sshd$"
+      child_process_regex: "^(python|perl|ruby|nc|ncat|bash|sh|zsh)$"
+
+  - name: "Unusual File Access"
+    description: "Access to sensitive files by non-root users."
+    enabled: true
+    event: "open"
+    severity: "medium"
+    match:
+      filename_regex: "^/(etc/passwd|etc/shadow|root/.*|var/log/secure|var/log/auth.log)$"
+    stateful:
+      source_event_match:
+        event: "open"
+        filename_regex: "^/(etc/passwd|etc/shadow|root/.*|var/log/secure|var/log/auth.log)$"
+      time_window_seconds: 60
+
+  - name: "Script Execution via Temporary Files"
+    description: "Execution of scripts directly from temporary directories."
+    enabled: true
+    event: "exec"
+    severity: "medium"
+    match:
+      filename_regex: "^/(tmp|var/tmp)/.*\.(sh|py|pl|rb|js)$"
+
+  - name: "High Volume Network Connections"
+    description: "Process making an unusually high number of outbound connections in a short time."
+    enabled: true
+    event: "connect"
+    severity: "high"
+    stateful:
+      source_event_match:
+        event: "connect"
+      time_window_seconds: 10  # 10 seconds window
+    match:
+      # Optional: could add process name regex if you want to restrict
+
+  - name: "New User Creation Attempt"
+    description: "Process executing useradd or adduser commands, indicating possible unauthorized user creation."
+    enabled: true
+    event: "exec"
+    severity: "high"
+    match:
+      filename_regex: "^/(usr/sbin|sbin)/adduser$|^/(usr/sbin|sbin)/useradd$"
+
+  - name: "Potential Reverse Shell Detection"
+    description: "Process with suspicious combination of exec and network connect indicating reverse shell."
+    enabled: true
+    event: "connect"
+    severity: "high"
+    stateful:
+      source_event_match:
+        event: "exec"
+        child_process_regex: "^(sh|bash|nc|ncat|python|perl|ruby)$"
+      time_window_seconds: 30
+
+  - name: "Unauthorized Mount Command Execution"
+    description: "Mount command executed by non-root users or suspicious locations."
+    enabled: true
+    event: "exec"
+    severity: "medium"
+    match:
+      filename_regex: "^/bin/mount$"
+      parent_process_regex: "^(?!root).*"  # parent process not root (negative lookahead)
+
+  - name: "Sudo Command Usage"
+    description: "Monitoring sudo command execution."
+    enabled: true
+    event: "exec"
+    severity: "low"
+    match:
+      filename_regex: "^/usr/bin/sudo$"
+
+
