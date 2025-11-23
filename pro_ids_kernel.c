@@ -47,7 +47,7 @@ static __always_inline void get_parent_comm(struct task_struct *task, char *buf)
     }
 }
 
-// --- CORRECTED TRACEPOINT HANDLER for execve ---
+// --- TRACEPOINT HANDLER for execve ---
 int trace_exec_entry(struct tracepoint__syscalls__sys_enter_execve *args) {
     int zero = 0;
     struct event_t *event = scratch.lookup(&zero);
@@ -70,7 +70,7 @@ int trace_exec_entry(struct tracepoint__syscalls__sys_enter_execve *args) {
     return 0;
 }
 
-// --- KPROBE for connect (still the best method for this) ---
+// --- KPROBE for connect  ---
 int trace_connect(struct pt_regs *ctx, struct sock *sk) {
     u16 family_val;
     bpf_probe_read_kernel(&family_val, sizeof(family_val), &sk->__sk_common.skc_family);
@@ -134,12 +134,12 @@ static __always_inline int process_open_event(void* ctx, const char __user* file
     return 0;
 }
 
-// CORRECTED TRACEPOINT HANDLER for open
+//  TRACEPOINT HANDLER for open
 int trace_open_entry(struct tracepoint__syscalls__sys_enter_open *args) {
     return process_open_event(args, (const char __user*)args->filename);
 }
 
-// CORRECTED TRACEPOINT HANDLER for openat
+//  TRACEPOINT HANDLER for openat
 int trace_openat_entry(struct tracepoint__syscalls__sys_enter_openat *args) {
     return process_open_event(args, (const char __user*)args->filename);
 }

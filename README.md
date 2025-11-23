@@ -36,12 +36,12 @@
 | **Live AI that instantly tells you:** attack type • suspicious IPs/domains • tools used • exact actions to take |
 
 
-<br/>
+<!-- <br/>
 
 <span style="font-size:1.4em; color:#e91e63; font-weight:bold;">A hive never sleeps.</span>  
 <span style="font-size:1.4em; color:#00e676; font-weight:bold;">The AI never blinks.</span>
 
-<br/>
+<br/> -->
 
 
 
@@ -243,7 +243,7 @@ Whether you're fixing a bug, adding new detection rules, improving the eBPF prob
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
+
 ---
 ---
 <div align="center">
@@ -285,6 +285,5 @@ Thank you for watching with us.
 
 </div>
 
----
 ---
 ---

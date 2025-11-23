@@ -331,7 +331,7 @@ if __name__ == "__main__":
         IDS_LOGGER.error(f"Failed to load BPF program from {args.kernel}: {e}")
         sys.exit(1)
 
-    # Attach probes/tracepoints - keep same as original
+    # Attach probes/tracepoints 
     try:
         b.attach_kprobe(event="tcp_connect", fn_name="trace_connect")
     except Exception as e:
