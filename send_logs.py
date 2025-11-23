@@ -4,7 +4,7 @@ from datetime import datetime
 import getpass
 import re
 
-API_BASE = "https://ids-ips-backend.vercel.app/api" 
+API_BASE = "https://logmanageridsipsbackend.onrender.com/api" 
 
 IPS_LOG_FILE = "ips_actions.log"
 IDS_LOG_FILE = "ids_alerts.log"

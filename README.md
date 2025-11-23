@@ -1,14 +1,55 @@
-# Raqhive — Network of Watchers
+<div align="center">
 
-**Raqhive** is a powerful, lightweight **eBPF-based IDS/IPS** that monitors critical system events in real time:
+![Linux](https://img.shields.io/badge/Linux-5.4%2B-yellow?style=for-the-badge&logo=linux)
+![eBPF](https://img.shields.io/badge/eBPF-powered-brightgreen?style=for-the-badge&logo=ebpf)
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python)
+![Dashboard](https://img.shields.io/badge/Live_Dashboard-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
--   Process execution (`execve`)
--   Outbound network connections (`connect`)
--   Sensitive file access (`open` / `openat`)
+<div align="center">
 
-Features **stateful correlation rules**, **live rule reloading**, and optional **automatic process termination** (IPS mode).
 
-All events are logged locally and can be forwarded to a centralized web dashboard.
+
+<br/>
+
+**Raqhive - Network of Watchers**  
+**Lightweight eBPF IDS/IPS + Real-time AI Security Platform**
+
+
+[Central Dashboard](https://log-manager-idsips.vercel.app) • 
+[Quick Start](#quick-start) • 
+[Example Rules](#example-rule-data-exfiltration-detection) • 
+[Report Bug](https://github.com/Sazidul0/Raqhive/issues) • 
+[Request Feature](https://github.com/Sazidul0/Raqhive/issues)
+
+<br/>
+
+</div>
+
+<img src="https://github.com/Sazidul0/Raqhive/blob/main/images/raqhive-banner.png" alt="Raqhive - eBPF IDS/IPS" width="900"/>
+
+
+| Real-time kernel visibility (exec • connect • open) |
+| Stateful correlation rules with instant hot-reload |
+| Optional automatic process kill (IPS mode) |
+| Central SIEM-like dashboard |
+| **Live AI that instantly tells you:** attack type • suspicious IPs/domains • tools used • exact actions to take |
+
+
+<br/>
+
+<span style="font-size:1.4em; color:#e91e63; font-weight:bold;">A hive never sleeps.</span>  
+<span style="font-size:1.4em; color:#00e676; font-weight:bold;">The AI never blinks.</span>
+
+<br/>
+
+
+
+</div>
+
+
+<!-- # Raqhive - Network of Watchers -->
+
 
 ---
 
@@ -20,6 +61,7 @@ All events are logged locally and can be forwarded to a centralized web dashboar
 -   IDS + optional IPS (auto-kill high-severity processes)
 -   Clean JSON alerts + separate IPS action log
 -   Central dashboard: https://log-manager-idsips.vercel.app
+-   AI based thread detection
 
 ---
 
@@ -67,7 +109,7 @@ python3 -c "from bcc import BPF; print('eBPF ready!')"
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/yourusername/raqhive.git
+    git clone https://github.com/Sazidul0/Raqhive.git
     cd raqhive
     ```
 
@@ -134,6 +176,67 @@ This rule detects when a process accesses a sensitive file and then establishes 
 
 ---
 
+## 📝 Use Cases
+
+### Ideal for
+- Linux servers & cloud VMs (Ubuntu, Debian, Rocky, etc.)  
+- Kubernetes nodes & container hosts  
+- Honeypots, exposed services, VPS, home labs  
+- Production environments needing real-time kernel visibility  
+- Compliance, audit, red/blue team exercises  
+- Any system running **Linux kernel 5.4+** with root access  
+
+### Not suitable for
+- **Windows** systems (no eBPF)  
+- **macOS** (limited & unstable eBPF support)  
+- **Android / iOS** devices  
+- **Old kernels (< 5.4)** without BTF  
+- **Serverless / FaaS** environments (no host kernel access)  
+- **Embedded / IoT** with locked-down or header-less kernels  
+- **Air-gapped or highly restricted** systems without CAP_BPF + headers  
+
+**In short:**  
+If it’s modern Linux and you have root - Raqhive is ready.  
+If it’s not Linux - look elsewhere (for now).
+
+<div align="center">
+  <strong>Linux is our domain. We protect it better than anyone.</strong>
+</div>
+
+
+
+
+
+
+---
+
+
+## 🚀 Contributing to Raqhive
+
+Raqhive is **open-source and community-driven** - we welcome contributions of all kinds!
+
+Whether you're fixing a bug, adding new detection rules, improving the eBPF probe, enhancing the AI analysis, or just improving documentation - your help makes the entire ecosystem safer.
+
+### Ways to contribute
+- 🐛 **Report bugs** or suspicious false positives
+- ✨ **Submit new detection rules** (especially real-world attack patterns)
+- 🛠️ **Improve performance** of the eBPF program
+- 🤖 **Enhance AI prompt logic** or dashboard features
+
+
+
+### How to contribute
+1. Fork the repository
+2. Create a branch (`git checkout -b feature/amazing-detection`)
+3. Make your changes
+4. Test thoroughly (especially eBPF changes!)
+5. Submit a Pull Request with a clear description
+
+
+
+
+---
+
 ### License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -141,9 +244,47 @@ This rule detects when a process accesses a sensitive file and then establishes 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
+---
+---
+<div align="center">
 
-### Author
+## ✨ Show Your Support - Keep the Hive Alive
 
-Built with passion for kernel security.
+If **Raqhive** helped secure your systems, caught a threat, or saved you time -  
+**please give it a star!** Every star fuels development and helps others discover it.
 
-*Raqhive, A hive never sleeps. Your system is being watched.*
+<br/>
+
+<a href="https://github.com/Sazidul0/Raqhive/stargazers">
+  <img src="https://img.shields.io/github/stars/Sazidul0/Raqhive?color=ffe203&label=Stars&logo=github&style=for-the-badge" alt="GitHub stars"/>
+</a>
+<a href="https://github.com/Sazidul0/Raqhive/fork">
+  <img src="https://img.shields.io/github/forks/Sazidul0/Raqhive?color=ff8c00&label=Forks&logo=github&style=for-the-badge" alt="GitHub forks"/>
+</a>
+<a href="https://github.com/Sazidul0/Raqhive">
+  <img src="https://img.shields.io/github/watchers/Sazidul0/Raqhive?label=Watchers&style=for-the-badge&color=8b5cf6" alt="GitHub watchers"/>
+</a>
+
+<br/><br/>
+
+**One click makes a huge difference** - thank you for being part of the hive!
+
+<br/>
+
+<span style="font-size:1.2em;">
+  <a href="https://github.com/Sazidul0/Raqhive">Star</a> • 
+  <a href="https://github.com/Sazidul0/Raqhive/fork">Fork</a> • 
+  <a href="https://github.com/Sazidul0/Raqhive/issues">Report Issue</a> • 
+  <a href="https://github.com/Sazidul0/Raqhive/pulls">Contribute</a>
+</span>
+
+<br/><br/>
+
+**A watched system is a secure system.**  
+Thank you for watching with us.
+
+</div>
+
+---
+---
+---
