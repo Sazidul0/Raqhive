@@ -68,9 +68,9 @@
 ### Project Structure
 
 ```text
-├── pro_ids_kernel.c       # eBPF program
-├── pro_ids_userspace.py   # Main userspace controller
-├── pro_rules.yaml         # Rule configuration (hot-reloadable)
+├── Raqhive.c.c            # eBPF program
+├── raqhive.py             # Main userspace controller
+├── Raqhive_rules.yaml     # Rule configuration (hot-reloadable)
 ├── send_logs.py           # Upload logs to central dashboard
 ├── ids_alerts.log         # IDS alerts (JSON lines)
 └── ips_actions.log        # IPS kill actions
@@ -115,7 +115,7 @@ python3 -c "from bcc import BPF; print('eBPF ready!')"
 
 2.  **Run Raqhive (requires root)**
     ```bash
-    sudo python3 pro_ids_userspace.py
+    sudo python3 raqhive.py
     ```
 
     You will see the following menu:
@@ -132,7 +132,7 @@ python3 -c "from bcc import BPF; print('eBPF ready!')"
     -   Choose `1` for **Monitoring only**.
     -   Choose `2` for **Full IPS mode**, which automatically terminates high-severity threats.
 
-> Rules in `pro_rules.yaml` are reloaded automatically on change. Press `Ctrl+C` to stop the program.
+> Rules in `Raqhive_rules.yaml` are reloaded automatically on change. Press `Ctrl+C` to stop the program.
 
 ---
 

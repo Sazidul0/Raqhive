@@ -1,8 +1,0 @@
-2025-11-18 15:24:49,433 - [IPS BLOCK] PID 14538 KILLED â†’ bash | Matched rule conditions | Rule: Web Server Spawning Shell
-2025-11-18 15:34:08,142 - [IPS BLOCK] PID 14722 KILLED â†’ curl â†’ 100.205.250.142:443 | Tainted parent â†’ connection to 100.205.250.142:443 | Rule: Potential Data Exfiltration via Network
-2025-11-18 15:48:23,515 - [IPS BLOCK] PID 565 KILLED â†’ NetworkManager â†’ 96.190.125.185:80 | Tainted parent â†’ connection to 96.190.125.185:80 | Rule: Potential Data Exfiltration via Network
-2025-11-18 15:48:24,178 - [IPS BLOCK] PID 15057 KILLED â†’ NetworkManager â†’ 97.91.189.91:80 | Tainted parent â†’ connection to 97.91.189.91:80 | Rule: Potential Data Exfiltration via Network
-2025-11-18 15:48:24,738 - [IPS BLOCK] PID 15080 KILLED â†’ NetworkManager â†’ 48.190.125.185:80 | Tainted parent â†’ connection to 48.190.125.185:80 | Rule: Potential Data Exfiltration via Network
-2025-11-18 15:48:25,240 - [IPS BLOCK] PID 15094 KILLED â†’ NetworkManager â†’ 48.190.125.185:80 | Tainted parent â†’ connection to 48.190.125.185:80 | Rule: Potential Data Exfiltration via Network
-2025-11-18 15:48:25,755 - [IPS BLOCK] PID 15112 KILLED â†’ NetworkManager â†’ 98.91.189.91:80 | Tainted parent â†’ connection to 98.91.189.91:80 | Rule: Potential Data Exfiltration via Network
-2025-11-18 15:48:26,255 - [IPS BLOCK] PID 15126 KILLED â†’ NetworkManager â†’ 97.190.125.185:80 | Tainted parent â†’ connection to 97.190.125.185:80 | Rule: Potential Data Exfiltration via Network

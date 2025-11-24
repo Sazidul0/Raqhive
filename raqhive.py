@@ -296,8 +296,8 @@ def menu():
 # ==================== ENTRYPOINT ====================
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-r", "--rules", default="pro_rules.yaml")
-    parser.add_argument("--kernel", default="pro_ids_kernel.c", help="Path to eBPF C file")
+    parser.add_argument("-r", "--rules", default="Raqhive_rules.yaml")
+    parser.add_argument("--kernel", default="Raqhive.c", help="Path to eBPF C file")
     args = parser.parse_args()
 
     choice = menu()
