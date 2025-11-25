@@ -17,7 +17,7 @@ def login():
     username = input("Enter your username: ")
     password = getpass.getpass("Enter your password: ")
 
-    resp = requests.post(f"{API_BASE}/signin", json={
+    resp = requests.post(f"{API_BASE}/login", json={
         "username": username,
         "password": password
     })
