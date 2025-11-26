@@ -145,6 +145,8 @@ python3 -c "from bcc import BPF; print('eBPF ready!')"
     ```
 3.  Enter your credentials when prompted. All alerts and IPS actions will be uploaded in real-time. You can then view, search, and manage alerts from all your hosts on the web dashboard.
 
+<img src="https://github.com/Sazidul0/Raqhive/blob/main/images/Dashboard.png" alt="Raqhive - eBPF IDS/IPS" width="900"/>
+
 ---
 
 ### Example Rule: Data Exfiltration Detection
